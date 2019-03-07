@@ -4,13 +4,13 @@ public class Main {
 
     public static void main(String[] args) {
         Deque<Integer> deque = new Deque<Integer>();
-        for (int i=1; i<=2; i++) {
+        for (int i=1; i<=3; i++) {
             deque.addFirst(i);
         }
 
         while(!deque.isEmpty()) {
-            System.out.println(deque.size());
-            System.out.println(deque.removeFirst());
+            //System.out.println(deque.size());
+            System.out.println(deque.removeLast());
         }
 
 
