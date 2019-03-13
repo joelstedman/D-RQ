@@ -41,6 +41,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         else {
             oldlast.next = null;
         }
+        count++;
     }
 
     public Item dequeue(){

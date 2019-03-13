@@ -60,8 +60,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         for(int i=0; i<random; i++) {
             current = current.next;
         }
-        //todo Need to remove the node
-        return current.item;
+        Item item = current.item;
+        current = null;
+        return item;
     }
 
     public Iterator<Item> iterator(){
