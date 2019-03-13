@@ -1,6 +1,8 @@
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.lang.IllegalArgumentException;
+import java.lang.UnsupportedOperationException;
 
 public class Deque<Item> implements Iterable<Item> {
 
@@ -26,6 +28,9 @@ public class Deque<Item> implements Iterable<Item> {
         return this.count;
     }
     public void addFirst(Item item)  {
+        if(item == null) {
+            throw new IllegalArgumentException();
+        }
         if(this.count == 0) {
             createFirstNode(item);
         }
@@ -39,6 +44,9 @@ public class Deque<Item> implements Iterable<Item> {
         }
     }
     public void addLast(Item item)  {
+        if(item == null) {
+            throw new IllegalArgumentException();
+        }
         if(this.count == 0) {
             createFirstNode(item);
         }
@@ -86,6 +94,9 @@ public class Deque<Item> implements Iterable<Item> {
             Item item = current.item;
             current = current.next;
             return item;
+        }
+        public void remove() {
+            throw new UnsupportedOperationException();
         }
 
     }

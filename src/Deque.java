@@ -1,6 +1,8 @@
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.lang.IllegalArgumentException;
+import java.lang.UnsupportedOperationException;
 
 public class Deque<Item> implements Iterable<Item> {
 
@@ -26,6 +28,9 @@ public class Deque<Item> implements Iterable<Item> {
         return this.count;
     }
     public void addFirst(Item item)  {
+        if(item == null) {
+            throw new IllegalArgumentException();
+        }
         if(this.count == 0) {
             createFirstNode(item);
         }
@@ -36,9 +41,13 @@ public class Deque<Item> implements Iterable<Item> {
             first.prev = node;
             first = node;
             this.count++;
+
         }
     }
     public void addLast(Item item)  {
+        if(item == null) {
+            throw new IllegalArgumentException();
+        }
         if(this.count == 0) {
             createFirstNode(item);
         }
@@ -49,29 +58,38 @@ public class Deque<Item> implements Iterable<Item> {
             last.next = node;
             last = node;
             this.count++;
+
         }
     }
     public Item removeFirst()  {
+        if (isEmpty()) throw new NoSuchElementException();
         if(this.count == 0) {
             return removeLastNode();
         }
         else {
-            Node node = first;
-            first = node.next;
+            Item item = first.item;
+            first = first.next;
             this.count--;
-            return node.item;
+            if(isEmpty()) {
+                first = null;
+            }
+            return item;
         }
 
     }
     public Item removeLast()   {
+        if (isEmpty()) throw new NoSuchElementException();
         if(this.count==0) {
             return removeLastNode();
         }
         else {
-            Node node = last;
-            last = node.prev;
+            Item item = last.item;
+            last = last.prev;
             this.count--;
-            return node.item;
+            if(isEmpty()) {
+                last = null;
+            }
+            return item;
         }
     }
     public Iterator<Item> iterator()  {
@@ -86,6 +104,9 @@ public class Deque<Item> implements Iterable<Item> {
             Item item = current.item;
             current = current.next;
             return item;
+        }
+        public void remove() {
+            throw new UnsupportedOperationException();
         }
 
     }
