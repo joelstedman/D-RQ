@@ -2,6 +2,9 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import edu.princeton.cs.algs4.StdRandom;
 
+
+
+
 public class RandomizedQueue<Item> implements Iterable<Item> {
 
     private Node first;
@@ -45,7 +48,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     public Item dequeue(){
-        if (isEmpty()) throw new NoSuchElementException();
+        //if (isEmpty()) throw new NoSuchElementException();
         Item item = first.item;
         first = first.next;
         count--;

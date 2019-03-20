@@ -22,6 +22,7 @@ public class Permutation {
         while (count < n) {
             StdOut.println(q.dequeue());
             count++;
+
         }
     }
 }
